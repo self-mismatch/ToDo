@@ -1,0 +1,72 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div class="tui-form__row">
+    <tui-input
+      formControlName="title"
+    >
+      Title
+      <span class="tui-required"></span>
+    </tui-input>
+    <tui-error
+      formControlName="title"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-input
+      formControlName="description"
+    >
+      Description
+    </tui-input>
+    <tui-error
+      formControlName="description"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-select
+      formControlName="status"
+      [valueContent]="statusContent"
+    >
+      Status
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="statusItems"
+        [itemContent]="statusContent"
+      ></tui-data-list-wrapper>
+    </tui-select>
+  </div>
+
+  <div class="tui-form__buttons">
+    <button
+      tuiButton
+      class="tui-form__button"
+      type="submit"
+      size="l"
+    >
+      Save
+    </button>
+    <button
+      *ngIf="context.data.action !== 'CREATE'"
+      tuiButton
+      class="tui-form__button"
+      type="button"
+      appearance="accent"
+      size="l"
+      (click)="deleteTask()"
+    >
+      Delete
+    </button>
+  </div>
+</form>
+
+<ng-template
+  #statusContent
+  let-item
+>
+  {{ item | taskStatus }}
+</ng-template>

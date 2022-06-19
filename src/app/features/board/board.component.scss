@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+.board {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.board__header {
+  width: 100%;
+}
+
+.board__main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.section__title {
+  width: 100%;
+  margin: 0;
+}
+
+.task {
+  width: 320px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// TODO: replace with Taiga variable
+@media (min-width: 64em) {
+  .section {
+    width: 30%;
+  }
+}
