@@ -1,0 +1,32 @@
+<div class="board">
+  <header class="board__header">
+    <button
+      tuiButton
+      class="tui-space_bottom-4"
+      appearance="flat"
+      icon="tuiIconPlusLarge"
+      size="m"
+      (click)="createTask()"
+    >
+      Add task
+    </button>
+  </header>
+
+  <main class="board__main">
+    <section
+      *ngFor="let section of sections"
+      class="section"
+    >
+      <h2 class="section__title">{{ section.title }}</h2>
+
+      <ng-container *ngIf="$any(boardState$ | async).tasks | taskFilter : section.taskStatus as tasks; else emptySectionContent">
+        <app-task
+          *ngFor="let task of tasks"
+          class="task"
+          [task]="task"
+        ></app-task>
+      </ng-container>
+    </section>
+    <ng-template #emptySectionContent>Empty</ng-template>
+  </main>
+</div>

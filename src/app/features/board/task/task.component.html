@@ -1,0 +1,19 @@
+<tui-island>
+  <h3 class="title">{{ task.title }}</h3>
+  <p
+    *ngIf="task.description"
+    class="description"
+  >
+    {{ task.description }}
+  </p>
+  <button
+    tuiButton
+    class="tui-island__footer-button"
+    type="button"
+    appearance="flat"
+    size="m"
+    (click)="edit()"
+  >
+    Edit
+  </button>
+</tui-island>
